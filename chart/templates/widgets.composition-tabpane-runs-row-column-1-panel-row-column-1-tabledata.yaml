@@ -24,7 +24,10 @@ spec:
         ${ [.allRuns.items[] | { key: .metadata.uid, run_id: .status.run_id, run_name: .status.run_name, date: .metadata.creationTimestamp } ] }
   api:
   - name: allRuns
-    path: "/apis/mlflow.krateo.io/v1alpha1/namespaces/{{ .Release.Name }}/runs/"
+    path: "/list?category=run"
     verb: GET
+    endpointRef:
+      name: bff-endpoint
+      namespace: krateo-system
     headers:
     - 'Accept: application/json'

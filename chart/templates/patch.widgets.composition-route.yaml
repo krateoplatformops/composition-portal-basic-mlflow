@@ -1,7 +1,7 @@
 apiVersion: krateo.io/v1alpha1
 kind: Patch
 metadata:
-  name: composition-{{ .Release.Name }}-card
+  name: composition-{{ .Release.Name }}-route
 spec:
   from:
     objectReference:
