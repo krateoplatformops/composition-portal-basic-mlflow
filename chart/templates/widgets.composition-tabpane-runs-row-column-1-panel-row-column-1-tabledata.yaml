@@ -26,8 +26,5 @@ spec:
   - name: allRuns
     path: "/apis/mlflow.krateo.io/v1alpha1/namespaces/{{ .Release.Name }}/runs/"
     verb: GET
-    endpointRef:
-      name: snowplow-endpoint
-      namespace: krateo-system
     headers:
     - 'Accept: application/json'
