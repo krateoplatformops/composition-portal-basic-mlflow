@@ -32,6 +32,11 @@ spec:
   app:
     template:
       schema: ${ .getCRD | .spec.versions[] | select(.name == "v0-0-2") | .schema.openAPIV3Schema.properties.spec.properties }
+      # propertiesToOverride:
+      # - name: experiment.properties.experiment_name
+      #   value: ${ [.getNamespaces | .items[].metadata.name][1] | tojson }
+      # - name: git.properties.toRepo.properties.deletionPolicy.enum
+      #   value: ${ [.getNamespaces | .items[].metadata.name] }
       # propertiesToHide: 
       # - fullnameOverride
       # - git.properties.deletionPolicy

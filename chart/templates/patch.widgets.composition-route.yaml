@@ -1,0 +1,20 @@
+apiVersion: krateo.io/v1alpha1
+kind: Patch
+metadata:
+  name: composition-{{ .Release.Name }}-route
+spec:
+  from:
+    objectReference:
+      apiVersion: templates.krateo.io/v1alpha1
+      kind: Widget
+      name: composition-{{ .Release.Name }}-card
+      namespace: {{ .Release.Namespace }}
+    fieldPath: metadata
+  to:
+    objectReference:
+      apiVersion: templates.krateo.io/v1alpha1
+      kind: Widget
+      name: composition-{{ .Release.Name }}-route
+      namespace: {{ .Release.Namespace }}
+    fieldPath: spec.app.template.path
+    transform: ${ "/compositions/" + .uid }
