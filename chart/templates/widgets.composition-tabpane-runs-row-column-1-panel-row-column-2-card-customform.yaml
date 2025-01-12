@@ -21,7 +21,7 @@ spec:
   actions:
     - template:
         id: submit
-        apiVersion: composition.krateo.io/v0-0-1
+        apiVersion: composition.krateo.io/v0-0-2
         verb: POST
         resource: mlflowruns
         payloadToOverride:
@@ -31,7 +31,7 @@ spec:
           value: ${ "{{ .Values.global.compositionId }}" }
   app:
     template:
-      schema: ${ .getCRD | .spec.versions[] | select(.name == "v0-0-1") | .schema.openAPIV3Schema.properties.spec.properties }
+      schema: ${ .getCRD | .spec.versions[] | select(.name == "v0-0-2") | .schema.openAPIV3Schema.properties.spec.properties }
       # propertiesToHide: 
       # - fullnameOverride
       # - git.properties.deletionPolicy
