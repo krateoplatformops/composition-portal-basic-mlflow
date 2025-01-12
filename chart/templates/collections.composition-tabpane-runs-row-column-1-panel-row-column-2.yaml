@@ -20,4 +20,4 @@ spec:
   - apiVersion: templates.krateo.io/v1alpha1
     resource: widgets
     name: composition-{{ .Release.Name }}-tabpane-runs-row-column-1-panel-row-column-2-card
-    namespace: ${ .metadata.namespace }
+    namespace: {{ .Release.Namespace }}

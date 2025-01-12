@@ -5,11 +5,11 @@ metadata:
 spec:
   from:
     objectReference:
-      apiVersion: mlflow.krateo.io/v1alpha1
-      kind: Experiment
-      name: {{ .Release.Name }}-experiment
+      apiVersion: templates.krateo.io/v1alpha1
+      kind: Widget
+      name: composition-{{ .Release.Name }}-card
       namespace: {{ .Release.Namespace }}
-    fieldPath: status
+    fieldPath: metadata
   to:
     objectReference:
       apiVersion: templates.krateo.io/v1alpha1
@@ -17,4 +17,4 @@ spec:
       name: composition-{{ .Release.Name }}-tabpane-runs-row-column-1-panel-row-column-1-tabledata
       namespace: {{ .Release.Namespace }}
     fieldPath: spec.api[0].path
-    transform: ${ /apis/mlflow.krateo.io/v1alpha1/namespaces/" + .experiment_id + "/runs/" }
+    transform: ${ /apis/mlflow.krateo.io/v1alpha1/namespaces/" + .uid + "/runs/" }
