@@ -3,3 +3,6 @@ global:
   compositionId: compositionId
   compositionApiVersion: compositionApiVersion
   compositionResource: compositionResource
+mlflow:
+  experiment:
+    name: diabetes-training-exp1
