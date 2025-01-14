@@ -1,0 +1,10 @@
+apiVersion: templates.krateo.io/v1alpha1
+kind: Widget
+metadata:
+  name: composition-{{ .Release.Name }}-tabpane-overview-row-column-1-panel-paragraph-workflow
+  namespace: {{ .Release.Namespace }}
+spec:
+  type: paragraph
+  app:
+    template:
+      text: "Workflow: https://github.com/generic-provider-testing/{{ .Release.Name }}/actions"

@@ -1,0 +1,20 @@
+apiVersion: krateo.io/v1alpha1
+kind: Patch
+metadata:
+  name: composition-{{ .Release.Name }}-collections-menu
+spec:
+  from:
+    objectReference:
+      apiVersion: templates.krateo.io/v1alpha1
+      kind: Widget
+      name: composition-{{ .Release.Name }}-route
+      namespace: {{ .Release.Namespace }}
+    fieldPath: metadata
+  to:
+    objectReference:
+      apiVersion: templates.krateo.io/v1alpha1
+      kind: Collection
+      name: menu
+      namespace: krateo-system
+    fieldPath: spec.widgetsRefs[4].name
+    resource: widgets

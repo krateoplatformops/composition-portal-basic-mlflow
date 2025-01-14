@@ -1,10 +1,10 @@
 apiVersion: templates.krateo.io/v1alpha1
 kind: Widget
 metadata:
-  name: composition-{{ .Release.Name }}-tabpane-overview-row-column-1-panel-paragraph
+  name: composition-{{ .Release.Name }}-tabpane-overview-row-column-1-panel-paragraph-experiment
   namespace: {{ .Release.Namespace }}
 spec:
   type: paragraph
   app:
     template:
-      text: "This is a scaffolded MLFlow model."
+      text: "Experiment: running"
