@@ -27,20 +27,20 @@ spec:
         payloadToOverride:
         - name: metadata.name
           value: ${ mlflow.run.name }
-        - name: spec.mlflow.experiment.name
-          value: ${ "{{ .Release.Name }}" }
+        # - name: mlflow.experiment.name
+        #   value: ${ "{{ .Release.Name }}" }
         - name: metadata.namespace
           value: ${ "mlflow-system" }
   app:
     template:
       schema: ${ .getCRD | .spec.versions[] | select(.name == "v0-0-3") | .schema.openAPIV3Schema.properties.spec.properties }
-      # propertiesToOverride:
-      # - name: experiment.properties.experiment_name
-      #   value: ${ [.getNamespaces | .items[].metadata.name][1] | tojson }
+      propertiesToOverride:
+      - name: mlflow.properties.experiment.properties.name
+        value: {{ .Release.Name }}
       # - name: git.properties.toRepo.properties.deletionPolicy.enum
       #   value: ${ [.getNamespaces | .items[].metadata.name] }
-      propertiesToHide: 
-      - mlflow.properties.experiment.properties.name
+      # propertiesToHide: 
+      # - mlflow.properties.experiment.properties.name
       # - git.properties.deletionPolicy
       # - git.properties.fromRepo.properties.branch
       # - git.properties.fromRepo.properties.credentials
