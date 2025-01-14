@@ -28,7 +28,7 @@ spec:
         - name: metadata.name
           value: ${ run_name }
         - name: metadata.namespace
-          value: ${ "{{ .Values.global.compositionId }}" }
+          value: ${ "mlflow-system" }
   app:
     template:
       schema: ${ .getCRD | .spec.versions[] | select(.name == "v0-0-3") | .schema.openAPIV3Schema.properties.spec.properties }
