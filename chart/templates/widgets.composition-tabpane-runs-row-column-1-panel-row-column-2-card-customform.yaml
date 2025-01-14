@@ -26,7 +26,9 @@ spec:
         resource: mlflowruns
         payloadToOverride:
         - name: metadata.name
-          value: ${ run_name }
+          value: ${ mlflow.run.name }
+        - name: spec.mlflow.experiment.name
+          value: ${ mlflow.run.name }
         - name: metadata.namespace
           value: ${ "mlflow-system" }
   app:
@@ -37,8 +39,8 @@ spec:
       #   value: ${ [.getNamespaces | .items[].metadata.name][1] | tojson }
       # - name: git.properties.toRepo.properties.deletionPolicy.enum
       #   value: ${ [.getNamespaces | .items[].metadata.name] }
-      # propertiesToHide: 
-      # - fullnameOverride
+      propertiesToHide: 
+      - mlflow.properties.experiment.properties.name
       # - git.properties.deletionPolicy
       # - git.properties.fromRepo.properties.branch
       # - git.properties.fromRepo.properties.credentials
