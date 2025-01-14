@@ -34,6 +34,6 @@ spec:
     template:
       tags: {{ .Release.Namespace }}
       title: {{ .Release.Name }}
-      content: This is a card for {{ .Release.Name }} composition
-      icon: fa-square-binary
+      content: This is a card for {{ .Release.Name }} Model scaffolding
+      icon: fa-chart-simple
       color: blue

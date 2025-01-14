@@ -3,19 +3,19 @@ data:
   panel: "true"
 kind: ConfigMap
 metadata:
-  name: composition-{{ .Release.Name }}-tabpane-runs-row-column-1-panel-row-column-2-card
+  name: composition-{{ .Release.Name }}-tabpane-runs-row-column-1-panel-row-column-2-card-runs
   namespace: {{ .Release.Namespace }}
 ---
 apiVersion: templates.krateo.io/v1alpha1
 kind: Widget
 metadata:
-  name: composition-{{ .Release.Name }}-tabpane-runs-row-column-1-panel-row-column-2-card
+  name: composition-{{ .Release.Name }}-tabpane-runs-row-column-1-panel-row-column-2-card-runs
   namespace: {{ .Release.Namespace }}
 spec:
   actions:
   - template:
       apiVersion: templates.krateo.io/v1alpha1
-      name: composition-{{ .Release.Name }}-tabpane-runs-row-column-1-panel-row-column-2-card-customform
+      name: composition-{{ .Release.Name }}-tabpane-runs-row-column-1-panel-row-column-2-card-runs-customform
       namespace: {{ .Release.Namespace }}
       resource: customforms
       verb: GET
@@ -29,7 +29,7 @@ spec:
       status: ${ .getCompositionDefinition.status.conditions[] | select(.type == "Ready") | "Ready:" + .status }
       date: ${ .getCompositionDefinition.metadata.creationTimestamp }
   propsRef:
-    name: composition-{{ .Release.Name }}-tabpane-runs-row-column-1-panel-row-column-2-card
+    name: composition-{{ .Release.Name }}-tabpane-runs-row-column-1-panel-row-column-2-card-runs
     namespace: {{ .Release.Namespace }}
   type: card
   api:
