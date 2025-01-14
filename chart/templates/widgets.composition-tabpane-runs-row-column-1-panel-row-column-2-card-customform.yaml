@@ -26,9 +26,11 @@ spec:
         resource: mlflowruns
         payloadToOverride:
         - name: metadata.name
-          value: ${ run_name }
+          value: ${ mlflow.run.name }
+        - name: spec.mlflow.experiment.name
+          value: ${ "{{ .Release.Name }}" }
         - name: metadata.namespace
-          value: ${ "{{ .Values.global.compositionId }}" }
+          value: ${ "mlflow-system" }
   app:
     template:
       schema: ${ .getCRD | .spec.versions[] | select(.name == "v0-0-3") | .schema.openAPIV3Schema.properties.spec.properties }
@@ -37,8 +39,8 @@ spec:
       #   value: ${ [.getNamespaces | .items[].metadata.name][1] | tojson }
       # - name: git.properties.toRepo.properties.deletionPolicy.enum
       #   value: ${ [.getNamespaces | .items[].metadata.name] }
-      # propertiesToHide: 
-      # - fullnameOverride
+      propertiesToHide: 
+      - mlflow.properties.experiment.properties.name
       # - git.properties.deletionPolicy
       # - git.properties.fromRepo.properties.branch
       # - git.properties.fromRepo.properties.credentials

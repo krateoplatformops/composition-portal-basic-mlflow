@@ -14,5 +14,5 @@ spec:
   app:
     template:
       menu: "false"
-      path: /compositions/{{ .Values.global.compositionId }}
+      path: /compositions/id
   type: route
