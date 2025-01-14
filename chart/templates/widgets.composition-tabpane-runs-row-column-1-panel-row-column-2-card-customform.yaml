@@ -28,7 +28,7 @@ spec:
         - name: metadata.name
           value: ${ mlflow.run.name }
         - name: spec.mlflow.experiment.name
-          value: ${ mlflow.run.name }
+          value: ${ "{{ .Release.Name }}" }
         - name: metadata.namespace
           value: ${ "mlflow-system" }
   app:
