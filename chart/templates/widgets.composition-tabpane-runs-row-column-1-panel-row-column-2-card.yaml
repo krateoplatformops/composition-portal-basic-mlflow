@@ -24,7 +24,7 @@ spec:
       color: ${ .getCompositionDefinition.status.conditions[] | select(.type == "Ready") | if .status == "False" then "orange" elif .status == "True" then "green" else "grey" end }
       content: This is a card for MLFlow {{ .Release.Name }} model runs
       icon: fa-person-running
-      tags: {{ .Release.Namespace }},{{ .Chart.Version }}
+      tags: {{ .Release.Namespace }},0.0.3
       title: MLFlow {{ .Release.Name }} Model Runs
       status: ${ .getCompositionDefinition.status.conditions[] | select(.type == "Ready") | "Ready:" + .status }
       date: ${ .getCompositionDefinition.metadata.creationTimestamp }
