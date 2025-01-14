@@ -21,7 +21,7 @@ spec:
   app:
     template:
       data: >
-        ${ [.allMetrics.items[] | select(.spec.experiment_name == "{{ .Release.Name }}") | { key: .metadata.uid, experiment_name: {{ .Release.Name }}, run_id: .spec.run_id, metrics: .status.metrics, date: .metadata.creationTimestamp } ] }
+        ${ [.allMetrics.items[] | select(.spec.experiment_name == "{{ .Release.Name }}") | { key: .metadata.uid, experiment_name: "{{ .Release.Name }}", run_id: .spec.run_id, metrics: .status.metrics, date: .metadata.creationTimestamp } ] }
   api:
   - name: allMetrics
     path: "/list?category=metric"
