@@ -10,3 +10,11 @@ spec:
     resource: widgets
     name: composition-{{ .Release.Name }}-tabpane-overview-row-column-1-panel-paragraph
     namespace: {{ .Release.Namespace }}
+  - apiVersion: templates.krateo.io/v1alpha1
+    resource: widgets
+    name: composition-{{ .Release.Name }}-tabpane-overview-row-column-1-panel-paragraph-experiment
+    namespace: {{ .Release.Namespace }}
+  - apiVersion: templates.krateo.io/v1alpha1
+    resource: widgets
+    name: composition-{{ .Release.Name }}-tabpane-overview-row-column-1-panel-paragraph-workflow
+    namespace: {{ .Release.Namespace }}

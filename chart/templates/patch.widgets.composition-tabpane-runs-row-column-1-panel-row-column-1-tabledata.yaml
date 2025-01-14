@@ -1,7 +1,7 @@
 apiVersion: krateo.io/v1alpha1
 kind: Patch
 metadata:
-  name: composition-{{ .Release.Name }}-card
+  name: composition-{{ .Release.Name }}-tabpane-runs-row-column-1-panel-row-column-1-tabledata
 spec:
   from:
     objectReference:
@@ -14,7 +14,7 @@ spec:
     objectReference:
       apiVersion: templates.krateo.io/v1alpha1
       kind: Widget
-      name: composition-{{ .Release.Name }}-route
+      name: composition-{{ .Release.Name }}-tabpane-runs-row-column-1-panel-row-column-1-tabledata
       namespace: {{ .Release.Namespace }}
     fieldPath: spec.app.template.path
     transform: >
