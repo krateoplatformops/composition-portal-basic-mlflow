@@ -9,7 +9,7 @@ spec:
       kind: Widget
       name: composition-{{ .Release.Name }}-route
       namespace: {{ .Release.Namespace }}
-    fieldPath: metadata
+    fieldPath: metadata.name
   to:
     objectReference:
       apiVersion: templates.krateo.io/v1alpha1
@@ -17,4 +17,3 @@ spec:
       name: menu
       namespace: krateo-system
     fieldPath: spec.widgetsRefs[3].name
-    resource: widgets
