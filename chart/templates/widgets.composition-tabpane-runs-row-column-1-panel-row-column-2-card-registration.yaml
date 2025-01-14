@@ -15,7 +15,7 @@ spec:
   actions:
   - template:
       apiVersion: templates.krateo.io/v1alpha1
-      name: composition-{{ .Release.Name }}-tabpane-runs-row-column-1-panel-row-column-2-card-runs-registration
+      name: composition-{{ .Release.Name }}-tabpane-runs-row-column-1-panel-row-column-2-card-registration-customform
       namespace: {{ .Release.Namespace }}
       resource: customforms
       verb: GET
