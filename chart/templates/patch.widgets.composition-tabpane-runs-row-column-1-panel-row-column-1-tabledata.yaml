@@ -1,0 +1,21 @@
+apiVersion: krateo.io/v1alpha1
+kind: Patch
+metadata:
+  name: composition-{{ .Release.Name }}-tabpane-runs-row-column-1-panel-row-column-1-tabledata
+spec:
+  from:
+    objectReference:
+      apiVersion: mlflow.krateo.io/v1alpha1
+      kind: Experiment
+      name: {{ .Release.Name }}-mlflow-scaffolding-experiment
+      namespace: {{ .Release.Namespace }}
+    fieldPath: status
+  to:
+    objectReference:
+      apiVersion: templates.krateo.io/v1alpha1
+      kind: Widget
+      name: composition-{{ .Release.Name }}-tabpane-runs-row-column-1-panel-row-column-1-tabledata
+      namespace: {{ .Release.Namespace }}
+    fieldPath: spec.app.template.path
+    transform: >
+      ${ "${ [.allRuns.items[] | select(.spec.experiment_id == " + .experiment_id + ") | { key: .metadata.uid, run_id: .status.run_id, run_name: .status.run_name, date: .metadata.creationTimestamp } ] }" }

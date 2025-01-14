@@ -17,5 +17,4 @@ spec:
       name: composition-{{ .Release.Name }}-route
       namespace: {{ .Release.Namespace }}
     fieldPath: spec.app.template.path
-    transform: >
-      ${ "/compositions/" + .uid }
+    transform: ${ "/compositions/" + .uid }
