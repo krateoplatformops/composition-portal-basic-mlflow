@@ -7,7 +7,7 @@ spec:
     objectReference:
       apiVersion: mlflow.krateo.io/v1alpha1
       kind: Experiment
-      name: {{ .Release.Name }}-mlflow-scaffolding-experiment
+      name: {{ .Release.Name }}-experiment
       namespace: {{ .Release.Namespace }}
     fieldPath: status
   to:

@@ -16,5 +16,5 @@ spec:
       kind: Collection
       name: menu
       namespace: krateo-system
-    fieldPath: spec.widgetsRefs[4].name
+    fieldPath: spec.widgetsRefs[3].name
     resource: widgets

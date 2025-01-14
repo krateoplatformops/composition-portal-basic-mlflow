@@ -6,7 +6,7 @@ metadata:
   namespace: {{ .Release.Namespace }}
 data:
   pageSize: "10"
-  columns: "[ { \"key\": \"run_id\", \"title\": \"run_id\" },{ \"key\": \"run_name\", \"title\": \"run_name\"},{\"key\": \"experiment_id\", \"title\": \"experiment_id\"},{\"key\": \"date\", \"title\": \"date\"} ]"    
+  columns: "[ {\"key\": \"experiment_name\", \"title\": \"experiment_name\"},{ \"key\": \"run_id\", \"title\": \"run_id\" },{ \"key\": \"metrics\", \"title\": \"metrics\"},{\"key\": \"date\", \"title\": \"date\"} ]"    
 ---
 apiVersion: templates.krateo.io/v1alpha1
 kind: Widget
@@ -21,10 +21,10 @@ spec:
   app:
     template:
       data: >
-        ${ [.allRuns.items[] | { key: .metadata.uid, run_id: .status.run_id, run_name: .status.run_name, date: .metadata.creationTimestamp } ] }
+        ${ [.allMetrics.items[] | select(.spec.experiment_name == "{{ .Release.Name }}") | { key: .metadata.uid, experiment_name: {{ .Release.Name }}, run_id: .spec.run_id, metrics: .status.metrics, date: .metadata.creationTimestamp } ] }
   api:
-  - name: allRuns
-    path: "/list?category=run"
+  - name: allMetrics
+    path: "/list?category=metric"
     verb: GET
     endpointRef:
       name: bff-endpoint

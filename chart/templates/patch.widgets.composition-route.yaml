@@ -5,11 +5,11 @@ metadata:
 spec:
   from:
     objectReference:
-      apiVersion: mlflow.krateo.io/v1alpha1
-      kind: Experiment
-      name: {{ .Release.Name }}-mlflow-scaffolding-experiment
+      apiVersion: templates.krateo.io/v1alpha1
+      kind: Widget
+      name: composition-{{ .Release.Name }}-card
       namespace: {{ .Release.Namespace }}
-    fieldPath: status
+    fieldPath: metadata
   to:
     objectReference:
       apiVersion: templates.krateo.io/v1alpha1
@@ -18,4 +18,4 @@ spec:
       namespace: {{ .Release.Namespace }}
     fieldPath: spec.app.template.path
     transform: >
-      ${ "${ [.allRuns.items[] | select(.spec.experiment_id == " + .experiment_id + ") | { key: .metadata.uid, run_id: .status.run_id, run_name: .status.run_name, date: .metadata.creationTimestamp } ] }" }
+      ${ "/compositions/" + .uid }
