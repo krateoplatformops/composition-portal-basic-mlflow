@@ -19,5 +19,9 @@ spec:
   widgetsRefs:
   - apiVersion: templates.krateo.io/v1alpha1
     resource: widgets
-    name: composition-{{ .Release.Name }}-tabpane-runs-row-column-1-panel-row-column-2-card
+    name: composition-{{ .Release.Name }}-tabpane-runs-row-column-1-panel-row-column-2-card-runs
+    namespace: {{ .Release.Namespace }}
+  - apiVersion: templates.krateo.io/v1alpha1
+    resource: widgets
+    name: composition-{{ .Release.Name }}-tabpane-runs-row-column-1-panel-row-column-2-card-registration
     namespace: {{ .Release.Namespace }}
