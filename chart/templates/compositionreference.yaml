@@ -1,0 +1,12 @@
+apiVersion: resourcetrees.krateo.io/v1
+kind: CompositionReference
+metadata:
+  name: composition-{{ .Release.Name }}-compositionreference
+  namespace: {{ .Release.Namespace }}
+spec:
+  filters:
+    exclude:
+    - apiVersion: "templates.krateo.io/v1alpha1"
+    - apiVersion: "v1"
+      resource: "configmaps"
+      name: "^composition-"
